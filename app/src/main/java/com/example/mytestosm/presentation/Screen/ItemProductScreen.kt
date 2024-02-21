@@ -53,9 +53,11 @@ fun ItemProductScreen(
             )
         },
     ) { innerPadding ->
-        Box( modifier = Modifier
-            .padding(innerPadding)
-            .background(color = BackgroundColor)) {
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .background(color = BackgroundColor)
+        ) {
             Column(
                 modifier
                     .fillMaxSize()

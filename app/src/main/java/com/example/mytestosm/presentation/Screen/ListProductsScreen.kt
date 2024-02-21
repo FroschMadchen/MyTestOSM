@@ -37,7 +37,7 @@ import com.example.mytestosm.ui.theme.Greq
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListProductsScreen(navController: NavHostController,infoPiz: ArrayList<PizzaModel>) {
+fun ListProductsScreen(navController: NavHostController, infoPiz: ArrayList<PizzaModel>) {
     Scaffold(
         topBar = {
             TopAppBar(

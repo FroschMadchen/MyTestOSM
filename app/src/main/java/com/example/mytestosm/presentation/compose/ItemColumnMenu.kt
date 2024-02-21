@@ -14,15 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.mytestosm.presentation.utils.Route
 
 @Composable
-fun ItemColumnMenu(text: String, navController: NavHostController, destination:String) {
+fun ItemColumnMenu(text: String, navController: NavHostController, destination: String) {
     Box(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
-            .clickable{navController.navigate(destination)}
+            .clickable { navController.navigate(destination) }
             .background(shape = RoundedCornerShape(10.dp), color = Color.White)
     ) {
         Row(Modifier.padding(end = 16.dp, start = 16.dp)) {

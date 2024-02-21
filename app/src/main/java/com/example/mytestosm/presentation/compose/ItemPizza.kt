@@ -28,7 +28,7 @@ fun ItemsPizza(pizzaModel: PizzaModel) {
             .fillMaxSize()
             .background(shape = RoundedCornerShape(10.dp), color = Color.White)
     ) {
-        Row(Modifier.padding(end = 16.dp, start = 16.dp,top=5.dp, bottom = 5.dp)) {
+        Row(Modifier.padding(end = 16.dp, start = 16.dp, top = 5.dp, bottom = 5.dp)) {
             Image(
                 painter = painterResource(id = pizzaModel.image),
                 contentDescription = "imagePizza",
@@ -38,7 +38,7 @@ fun ItemsPizza(pizzaModel: PizzaModel) {
                 text = pizzaModel.name,
                 style = MaterialTheme.typography.displayLarge,
                 color = Color.Black,
-                modifier = Modifier.padding(start=10.dp)
+                modifier = Modifier.padding(start = 10.dp)
             )
         }
     }

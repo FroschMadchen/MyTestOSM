@@ -18,7 +18,6 @@ import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
 
 
-
 @Composable
 fun MapScreen(navHostController: NavHostController) {
     Column(Modifier.fillMaxSize()) {
@@ -26,11 +25,9 @@ fun MapScreen(navHostController: NavHostController) {
         MapView(
             modifier = Modifier.fillMaxSize(),
             onMapReady = { map ->
-                // mapView = map
                 addMarker1(map)
             },
             onMapClick = { geoPoint, mapView ->
-                // Этот код выполнится при нажатии на карту
                 addMarker(geoPoint, mapView)
             },
             onLongPress = ::handleLongPress,
@@ -41,6 +38,7 @@ fun MapScreen(navHostController: NavHostController) {
         )
     }
 }
+
 fun handleLongPress(geoPoint: GeoPoint, mapView: MapView?) {  // основная функция нажатия
     // Добавление метки при долгом нажатии на карту
 
@@ -70,8 +68,6 @@ fun handleLongPress(geoPoint: GeoPoint, mapView: MapView?) {  // основна�
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
             map.overlays.add(marker)
             map.invalidate()
-
-
         }
     }
 }

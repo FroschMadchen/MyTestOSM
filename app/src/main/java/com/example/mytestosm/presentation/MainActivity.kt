@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -57,10 +58,10 @@ fun MainGraph(
 ) {
 
     val infoPiz = arrayListOf<PizzaModel>(
-        PizzaModel(1, R.drawable.image_1, "Peperoni", "Острая пицца «Пепперони с халапеньо» — мексиканская забава из колбасных кружочков, устилающих основу, пропитывая ее чесночно-копченным ароматом. Вызывает сильный аппетит и настрой на плотный перекус. Халапеньо добавляет огонька и согревает изнутри, даже если пицца немного остыла."),
-        PizzaModel(2, R.drawable.image_2, "Vegan", "Экзотика в нашем меню – пицца Vegan. Пробуя на вкус эту уникальную в своем роде пиццу, вы можете ощутить прилив энергии и сил, вызывающих желание страстно и горячо танцевать, под сопровождение жаркого гавайского танго. Именно в этом танце сплелась копченая курочка с ананасом и сыром молодых буйволиц — Моцарелла. "),
-        PizzaModel(3, R.drawable.image_3, "Margaritta", "Утонченная, томатная и ароматная «Маргарита» слишком сладкая и сочная, чтобы забыть ее вкус. Не смотря на отсутствие мяса, курицы или колбасок, она-таки хороша! Все дело в хорошо отобранных помидорах, которые успели созреть, но не переспеть – в меру плотные, мягкие и приправленные соусом из собственной мякоти. "),
-        PizzaModel(4, R.drawable.image_4, "Mexican", "Mexican одна из лидирующих позиций при заказе пиццы на большие компании. Решает проблемы на корню, как только в офисе или компании друзей завязывается спор — какую начинку выбрать. Разнообразие четырех вкусов способно удовлетворить гастрономические потребности каждого за столом."),
+        PizzaModel(1, R.drawable.image_1, "Peperoni", stringResource(id = R.string.info_1)),
+        PizzaModel(2, R.drawable.image_2, "Vegan", stringResource(id = R.string.info_2)),
+        PizzaModel(3, R.drawable.image_3, "Margaritta", stringResource(id = R.string.info_3)),
+        PizzaModel(4, R.drawable.image_4, "Mexican", stringResource(id = R.string.info_4)),
     )
     NavHost(navController = navHostController, startDestination = Route.MAP_SCREEN) {
         composable(route = Route.MAP_SCREEN) {
@@ -77,28 +78,7 @@ fun MainGraph(
             Unavailable(navHostController)
         }
 
-
-        /*  composable("itemProduct/{pizzaModel.id}") { backStackEntry ->
-               val idM = backStackEntry.arguments?.getInt("pizzaModel.id")
-               if (idM != null) {
-                   val pizzaModel = infoPiz.get(id)// Получение модели продукта по id
-                   ItemProductScreen(pizzaModel = pizzaModel)
-               }
-           }*/
-        /*   composable("itemProduct/{id}") { backStackEntry ->
-               val id = backStackEntry.arguments?.getInt("id")
-               if (id != null) {
-                   val pizzaModel = infoPiz.getOrNull(id)
-                   if (pizzaModel != null) {
-                       ItemProductScreen(pizzaModel = pizzaModel)
-                   } else {
-                       // Обработка ситуации, если модель продукта не найдена по указанному id
-                   }
-               } else {
-                   // Обработка ситуации, если id не передано
-               }
-           }*/
-        composable("itemProduct/{index}") { backStackEntry ->
+        composable(Route.ITEM_PRODUCT_SCREEN) { backStackEntry ->
             val index = backStackEntry.arguments?.getString("index")?.toIntOrNull()
             if (index != null) {
                 val pizzaModel = infoPiz.getOrNull(index)

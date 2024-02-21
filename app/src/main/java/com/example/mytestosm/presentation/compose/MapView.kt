@@ -51,7 +51,7 @@ var SearchEnd: Boolean = false
 fun MapView(
     modifier: Modifier = Modifier,
     onMapReady: (MapView) -> Unit,
-    onMapClick: (GeoPoint, MapView) -> Unit,// Изменение типа параметра onMapClick
+    onMapClick: (GeoPoint, MapView) -> Unit,
     onLongPress: (GeoPoint, MapView) -> Unit,
     drawPolyline: (MapView, GeoPoint, GeoPoint) -> Unit,
     navHostController: NavHostController
@@ -82,7 +82,6 @@ fun MapView(
 
                     override fun longPressHelper(p: GeoPoint?): Boolean {
                         p?.let { geoPoint ->
-                            // Вызываем функцию обратного вызова, чтобы добавить метку
                             onLongPress(geoPoint, this@apply)
                         }
                         return true
@@ -167,9 +166,7 @@ fun MapView(
                         }
                     },
                     Modifier
-                        .fillMaxWidth()
-                    //.clickable(enabled = clickableBtn, onClickLabel = null, onClick = {})
-                    ,
+                        .fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Click,
                         contentColor = Color.White,
@@ -195,17 +192,6 @@ fun MapView(
             }
         }
     }
-    /* Button(
-         onClick = {
-             POINT_A?.let { pointA ->
-                 POINT_B?.let { pointB ->
-                     drawPolyline(mapView, pointA, pointB)
-                 }
-             }
-         }
-     ) {
-         Text(text = "Закрепить точку B")
-     }*/
 }
 
 
@@ -220,40 +206,4 @@ fun geoPointFromPoint(x: Float, y: Float, mapView: MapView): GeoPoint {
     val point = projection.fromPixels(x.toInt(), y.toInt())
     Log.i("geoPointFromPoint", "${point.latitude} , ${point.longitude}")
     return GeoPoint(point.latitude, point.longitude)
-}/*@Composable
-fun MapView2(
-    modifier: Modifier = Modifier,
-    onMapReady: (MapView) -> Unit,
-    onMapClick:(GeoPoint,MapView) -> Unit //Добавляем параметр для обработчика нажатия на карту
-
-) {
-    val mapView = rememberMapViewWithLifecycle()
-
-    AndroidView(
-        factory = { context ->
-
-            *//*MapView(context).apply {
-                setTileSource(org.osmdroid.tileprovider.tilesource.TileSourceFactory.DEFAULT_TILE_SOURCE)
-                setMultiTouchControls(true)
-                controller.setZoom(10.0)
-                controller.setCenter(org.osmdroid.util.GeoPoint(0.0, 0.0))
-                onMapReady(this)
-            }*//*
-            mapView.apply {//mapView.apply
-                // Устанавливаем обработчик готовности карты
-                setMultiTouchControls(true)
-                controller.setZoom(10.0)
-                controller.setCenter(org.osmdroid.util.GeoPoint(0.0, 0.0))
-                onMapReady(this)
-                // Устанавливаем обработчик нажатия на карту
-                setOnClickListener { event ->
-
-                    onMapClick(geoPointFromPoint(event.x, event.y,this),this)
-                    Log.i("setOnClickListenerMAP","${event.x},${event.y}")
-                }
-            }
-        },
-        modifier = modifier.fillMaxSize()
-    )
 }
-*/

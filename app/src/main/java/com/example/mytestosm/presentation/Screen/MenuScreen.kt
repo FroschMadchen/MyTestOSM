@@ -37,9 +37,9 @@ fun MenuScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {  },
+                title = { },
                 colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = BackgroundColor),
-                        navigationIcon = {
+                navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
                         Image(
                             painter = painterResource(id = R.drawable.icon_back),
@@ -51,7 +51,12 @@ fun MenuScreen(navController: NavHostController) {
             )
         },
     ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding).fillMaxSize().background(color = BackgroundColor)) {
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .background(color = BackgroundColor)
+        ) {
             Column {
 
                 Text(
@@ -70,8 +75,6 @@ fun MenuScreen(navController: NavHostController) {
                         listOf("Пицца", "Суши", "Вок")
                     ) { index, item ->
 
-                        // Для каждого элемента списка вызывается данная функция.
-                        // Вместо текста можно использовать любые другие компоненты интерфейса.
                         ItemColumnMenu(
                             text = item,
                             navController = navController,
@@ -79,16 +82,14 @@ fun MenuScreen(navController: NavHostController) {
                                 0 -> Route.LIST_PRODUCTS_SCREEN
                                 1 -> Route.UNAVAILABLE
                                 2 -> Route.UNAVAILABLE
-                                else -> "" // Укажите ваш пункт назначения
+                                else -> ""
                             }
                         )
                     }
-
                 }
             }
         }
     }
-
 }
 
 
